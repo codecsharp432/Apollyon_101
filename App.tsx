@@ -75,9 +75,9 @@ const App: React.FC = () => {
       setCurrentQuestionIndex(0);
       
       setTimeout(() => setState(AppState.ASSESSMENT), 500);
-    } catch (err) {
+    } catch (err: any) {
       clearInterval(interval);
-      setErrorMsg("CONNECTION WITH GENERATIVE CORE FAILED. TRY AGAIN.");
+      setErrorMsg(`CONNECTION FAILED: ${err.message || "UNKNOWN ERROR"}`);
       setState(AppState.ERROR);
     }
   };
@@ -130,9 +130,9 @@ const App: React.FC = () => {
       localStorage.setItem('psyche7_leaderboard', JSON.stringify(updatedLB));
 
       setTimeout(() => setState(AppState.RESULT), 800);
-    } catch (err) {
+    } catch (err: any) {
       clearInterval(interval);
-      setErrorMsg("ANALYSIS ALGORITHM CORRUPTED. DATA PACKET LOST.");
+      setErrorMsg(`ANALYSIS FAILED: ${err.message || "DATA CORRUPTED"}`);
       setState(AppState.ERROR);
     }
   };
