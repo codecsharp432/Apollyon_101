@@ -44,7 +44,7 @@ export const generateAssessmentQuestions = async (count: number): Promise<Questi
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-flash-latest",
       contents: `Generate ${count} psychological assessment questions.`,
       config: {
         systemInstruction,
@@ -122,7 +122,7 @@ export const analyzePersonality = async (answers: Answer[], username: string): P
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash", // Use Flash as it is available and fast
+      model: "gemini-flash-latest", // Use Flash Latest for stability
       contents: `Analyze this subject data: ${inputData}`,
       config: {
         systemInstruction,
